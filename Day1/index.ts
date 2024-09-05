@@ -1,8 +1,18 @@
-export const totalCalibrationValue = (e: string[]) => {
+import * as fs from "fs";
+import * as path from "path";
+
+export const totalCalibrationValue = (filePath: string) => {
+  const fileContent = fs.readFileSync(filePath, "utf-8");
+  const lines = fileContent.split("\n");
+
   let totalSum = 0;
 
-  e.forEach((s) => {
-    const digits = s.replace(/\D/g, "");
+  lines.forEach((line) => {
+    const updatedLine = line.trim();
+
+    if (!updatedLine.length) return;
+
+    const digits = updatedLine.replace(/\D/g, "");
 
     if (digits.length === 0) return;
 
@@ -17,6 +27,6 @@ export const totalCalibrationValue = (e: string[]) => {
   return totalSum;
 };
 
-console.log(
-  totalCalibrationValue(["1abc2", "pqr3stu8vwx", "treb7uchet", "a1b2c3d4e5f"])
-);
+// TODO: Comment below code while running test cases
+const filePath = path.join(__dirname, "./file.txt");
+console.log(totalCalibrationValue(filePath));
