@@ -6,6 +6,7 @@
   "scripts": {
     "build": "tsc",
     "start:day1": "npx tsc && node Day1/index.js",
+    "start:day2": "npx tsc && node Day2/index.js",
     "test": "npx jest"
   },
   "keywords": [],
